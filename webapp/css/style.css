@@ -1,0 +1,34 @@
+html, body, #content {
+	min-height: 100%;
+}
+
+.image-book-stage {
+	width: 100%;
+	height: min(64vh, 560px);
+	min-height: 360px;
+	overflow: hidden;
+	border-radius: 1rem;
+	background: #dfe8e7;
+}
+
+.image-book-stage canvas {
+	display: block;
+	width: 100%;
+	height: 100%;
+	touch-action: pan-y;
+	cursor: pointer;
+	outline: none;
+}
+
+.image-book-stage canvas:focus-visible {
+	outline: 3px solid #176b5b;
+	outline-offset: -4px;
+	border-radius: 1rem;
+}
+
+@media (max-width: 600px) {
+	.image-book-stage {
+		height: 450px;
+		min-height: 320px;
+	}
+}

@@ -1,0 +1,38 @@
+<mvc:View
+	controllerName="pt.arquivo.imagesearch.controller.Main"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core">
+	<Page title="{i18n>appTitle}" id="page">
+		<content>
+			<VBox class="sapUiResponsiveContentPadding" width="100%">
+				<Title text="{i18n>searchHeading}" level="H2" class="sapUiSmallMarginBottom" />
+				<FlexBox wrap="Wrap" alignItems="End" class="sapUiSmallMarginBottom">
+					<VBox width="22rem" class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+						<Label text="{i18n>queryLabel}" labelFor="queryInput" />
+						<SearchField id="queryInput" placeholder="{i18n>queryPlaceholder}" search=".onSearch" />
+					</VBox>
+					<VBox width="12rem" class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+						<Label text="{i18n>fromLabel}" labelFor="fromDate" />
+						<DatePicker id="fromDate" valueFormat="yyyy-MM-dd" displayFormat="medium" placeholder="{i18n>datePlaceholder}" />
+					</VBox>
+					<VBox width="12rem" class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+						<Label text="{i18n>toLabel}" labelFor="toDate" />
+						<DatePicker id="toDate" valueFormat="yyyy-MM-dd" displayFormat="medium" placeholder="{i18n>datePlaceholder}" />
+					</VBox>
+					<Button text="{i18n>searchButton}" type="Emphasized" icon="sap-icon://search" press=".onSearch" class="sapUiSmallMarginBottom" />
+				</FlexBox>
+				<Text text="{imageSearch>/statusText}" class="sapUiSmallMarginBottom" />
+				<core:HTML
+					id="bookCanvas"
+					content="&lt;div class=&quot;image-book-stage&quot;&gt;&lt;canvas id=&quot;bookCanvasSurface&quot; role=&quot;img&quot; aria-label=&quot;Archived image results book. Use left and right arrow keys or click either page to turn pages.&quot; tabindex=&quot;0&quot;&gt;&lt;/canvas&gt;&lt;/div&gt;" />
+				<HBox justifyContent="Center" alignItems="Center" class="sapUiSmallMarginTop">
+					<Button id="previousPageButton" icon="sap-icon://slim-arrow-left" text="{i18n>previousPage}" press=".onPreviousPage" enabled="{imageSearch>/hasPrevious}" />
+					<Text text="{imageSearch>/pageIndicator}" class="sapUiSmallMarginBeginEnd" />
+					<Button id="nextPageButton" icon="sap-icon://slim-arrow-right" text="{i18n>nextPage}" iconFirst="false" press=".onNextPage" enabled="{imageSearch>/hasNext}" />
+				</HBox>
+			</VBox>
+		</content>
+	</Page>
+</mvc:View>
